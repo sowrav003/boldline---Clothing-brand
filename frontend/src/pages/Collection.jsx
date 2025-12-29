@@ -33,10 +33,10 @@ const Collection = () => {
 
   const applyFilters = () => {
     let productsCopy = products.slice();
-    if(showSearch && search){
+   if(showSearch && search ){
       productsCopy = productsCopy.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()));
-      console.log(productsCopy);
     }
+
     if(category.length > 0){
       productsCopy = productsCopy.filter((item) => category.includes(item.category));
     }
@@ -66,7 +66,7 @@ const Collection = () => {
  
   useEffect(() => {
     applyFilters();
-  }, [category, SubCategories,showSearch]);
+  }, [category, SubCategories,search,showSearch]);
 
   useEffect(() => {
     sortProducts();
@@ -134,7 +134,7 @@ const Collection = () => {
             <ProductItems
               key={index} 
               name ={product.name}
-              id= {product.id}
+              id= {product._id}
               price={product.price}
               image={product.image}
             />
