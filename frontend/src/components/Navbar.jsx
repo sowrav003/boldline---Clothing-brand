@@ -5,9 +5,8 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
   return (
-    <nav className="flex items-center justify-between py-5 font-medium">
+    <nav className="flex items-center justify-between py-5 font-medium sticky top-0 z-50 bg-white border-b border-gray-300">
       <Link to="/">
-        {" "}
         <img src={assets.logo} alt="Boldline Logo" className="w-36" />
       </Link>
       <ul className="hidden sm:flex text-gray-700 gap-5 text-sm">
@@ -48,7 +47,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <Link Link to="/cart" className="relative">
+        <Link to="/cart" className="relative">
           <img src={assets.cart_icon} alt="Cart" className="w-5 min-w-5" />
           <p className="absolute -right-1.25 -bottom-1.25 w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]">
             {" "}
