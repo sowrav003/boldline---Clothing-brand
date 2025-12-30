@@ -9,6 +9,7 @@ const Product = () => {
 
   const [productData, setProductData] = useState(false)
   const [image, setImage] = useState('')
+  const [size, setSize] = useState('')
 
   const fetchProductData = async () => {
     products.map((item) => {
@@ -61,14 +62,32 @@ const Product = () => {
           <div className='my-8 flex flex-col gap-4'>
             <p className=''>Select Size</p>
             <div className='flex gap-2'>
-              {productData.sizes.map((size, index) => (
-                <button className={`border-gray-300 py-2 px-4 bg-gray-100`} key={index}>{size}</button>
+              {productData.sizes.map((item, index) => (
+                <button onClick={()=>setSize(item)} className={`border py-2 px-4 bg-gray-100 cursor-pointer ${item === size ? 'bg-orange-400 text-white ' : ''}`} key={index}>{item}</button>
               ))}
             </div>
           </div>
-          <button className='bg-black text-white px-6 py-3 hover:bg-gray-800 transition-colors ease-in-out'>Add to Cart</button>
+          <button className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700 cursor-pointer'>Add to Cart</button>
+          <hr className='mt-8 sm:w-4/5 border-gray-300'/>
+          <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
+            <p>100% Original product</p>
+            <p>Cash on delivery is available on this product</p>
+            <p>Easy returns and exchanges in 14 days</p>
+          </div>
         </div>
       </div>
+      {/* Additional Information Section */}
+      <div className='mt-20'>
+        <div className='flex'>
+            <b className='border border-gray-300 px-5 py-3 text-sm'>Product Details</b>
+        <p className='border border-gray-300 px-5 py-3 text-sm'>Reviews</p>
+        </div>
+        <div className='flex flex-col gap-4 border border-gray-300 px-6 py-6 text-sm text-gray-500'>
+              <p>Key features of an e-commerce website include product listings with detailed descriptions and images, a shopping cart system for users to add and manage their selected items, secure payment gateways for processing transactions, and user accounts for tracking orders and managing personal information. E-commerce websites may also incorporate features such as customer reviews, wish lists, and personalized recommendations to enhance the shopping experience.</p>
+              <p>Overall, e-commerce websites have revolutionized the way people shop and conduct business, providing a convenient and efficient platform for both buyers and sellers in the digital age.</p>
+        </div>
+      </div>
+
     </div>
   ) : <div className='opacity-0'>Loading...</div>
 }
